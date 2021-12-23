@@ -1,6 +1,6 @@
 {
   "name": "clyne-scss-core",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "repository": "https://github.com/jacobclyne/clyne-scss-core",
   "license": "BSD-3-Clause",
   "description": "SCSS useful mixins, functions and snippets and global reset",
