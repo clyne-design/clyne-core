@@ -117,7 +117,7 @@
 }
 @mixin colorPalette($map: $c) {
     @each $name, $color in $map {
-        .color-#{$name} {
+        .color-#{"" + $name + ""} {
             color: var(--#{"" + $name + ""});
         }
         $map: map-merge($map, (#{$name + '-hover'}: set-lightness($color, 5)));

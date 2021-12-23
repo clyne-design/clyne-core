@@ -51,6 +51,9 @@ button, input, optgroup, select, textarea {
     font: inherit;
     appearance: none;
     display: block;
+    @if map-get($c, brand) {
+        caret-color: c(brand);
+    }
     @include placeholder {
         opacity: 1;
         font-family: inherit;
