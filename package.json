@@ -3,7 +3,7 @@
   "version": "1.0.26",
   "repository": "https://github.com/jacobclyne/clyne-scss-core",
   "license": "BSD-3-Clause",
-  "description": "SCSS useful mixins, functions and snippets and global reset",
+  "description": "Collection of SCSS mixins, functions, snippets and global reset.",
   "author": {
     "name": "Jacob Clyne",
     "email": "j@clyne.design",
