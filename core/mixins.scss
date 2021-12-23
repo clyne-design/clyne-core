@@ -54,11 +54,11 @@
     height: var(--vh, 100vh);
     height: stretch;
 }
-@mixin font($name, $path, $weight, $range: null) {
+@mixin font($name, $path, $fileName, $weight, $range: null) {
     @font-face {
         font-family: $name;
-        src: url('#{$path}/#{$name}.woff2#{$cache}') format('woff2'),
-        url('#{$path}/#{$name}.woff#{$cache}') format('woff');
+        src: url('#{$path}/#{$fileName}.woff2#{$cache}') format('woff2'),
+        url('#{$path}/#{$fileName}.woff#{$cache}') format('woff');
         font-weight: $weight;
         font-style: normal;
         font-display: swap;
