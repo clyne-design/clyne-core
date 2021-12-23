@@ -13,6 +13,6 @@
     "sass": "^1.45.1"
   },
   "scripts": {
-    "publish": "npm version patch && npm publish"
+    "version": "git add . && git commit -m 'version update' && git push && npm version patch && npm publish"
   }
 }
