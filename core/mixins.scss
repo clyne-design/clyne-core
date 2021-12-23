@@ -54,19 +54,6 @@
     height: var(--vh, 100vh);
     height: stretch;
 }
-@mixin font($name, $path, $fileName, $weight, $range: null) {
-    @font-face {
-        font-family: $name;
-        src: url('#{$path}/#{$fileName}.woff2#{$cache}') format('woff2'),
-        url('#{$path}/#{$fileName}.woff#{$cache}') format('woff');
-        font-weight: $weight;
-        font-style: normal;
-        font-display: swap;
-        @if ($range != null) {
-            unicode-range: $range;
-        }
-    }
-}
 @mixin mobile {
     @media screen and (max-width: $mobile) {
         @content;
