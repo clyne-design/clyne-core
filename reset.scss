@@ -1,21 +1,19 @@
-@use "sass:math";
 @import "index";
 html {
-    font: #{$baseFontSize + 'px'} / math.div($lineHeight, $baseFontSize) $f;
+    font: #{$baseFontSize + 'px'} / div($lineHeight, $baseFontSize) $f;
     -webkit-text-size-adjust: 100%;
-    background: c(base);
-    color: sc(base);
+    background: c(pageBackground);
+    color: sc(pageBackground);
     user-select: none;
     height: 100%;
+    &, body {
+        width: 100%;
+        max-width: 100vw;
+    }
 }
 body {
     font-size: rem($fontSize);
-}
-html, body {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    min-height: 100%;
 }
 * {
     margin: 0;
@@ -33,6 +31,7 @@ html, body {
     }
 }
 a {
+    color: inherit;
     text-decoration: none;
     transition: 400ms color, 400ms background, 400ms border-color, 400ms box-shadow;
 }
@@ -41,7 +40,7 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-img {
+img, svg {
     display: block;
     max-width: 100%;
     pointer-events: none;
@@ -56,14 +55,20 @@ button, input, optgroup, select, textarea {
         opacity: 1;
         font-family: inherit;
     }
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button,
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button,
     &::-webkit-search-results-button,
     &::-webkit-search-results-decoration {
+        margin: 0;
         -webkit-appearance: none;
     }
     &::-ms-clear {
         display: none;
+    }
+    &::-webkit-calendar-picker-indicator {
+        background: none;
     }
     &[type='file'] {
         position: absolute;
@@ -118,5 +123,12 @@ h1, h2, h3, h4, h5, h6 {
     user-select: text;
     > * {
         user-select: text;
+    }
+}
+@if map-get($c, brand) {
+    ::selection {
+        background: c(brand, 0.1);
+        color: c(brand);
+        -webkit-text-fill-color: c(brand);
     }
 }
