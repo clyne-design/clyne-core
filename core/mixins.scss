@@ -1,0 +1,115 @@
+@import "variables";
+@mixin placeholder {
+    $prefixList: '::-webkit-input', ':-moz', '::-moz', ':-ms-input';
+    @each $prefix in $prefixList {
+        &#{$prefix}-placeholder {
+            @content;
+            opacity: 1;
+        }
+    }
+}
+@mixin retina {
+    @media(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        @content;
+    }
+}
+@mixin media-hover {
+    @media (hover: hover) {
+        @content;
+    }
+}
+@mixin hover {
+    @media (hover: hover) {
+        &:hover {
+            @content;
+        }
+    }
+    &:active {
+        @content;
+    }
+}
+@mixin hover-active {
+    @media (hover: hover) {
+        &:hover {
+            @content;
+        }
+    }
+    &.active, &:active {
+        @content;
+    }
+}
+@mixin over($n1, $n2) {
+    --#{$n1}: var(--#{$n2});
+    --#{$n1}-hover: var(--#{$n2}-hover);
+    --#{$n1}-sc: var(--#{$n2}-sc);
+    --#{$n1}-rgb: var(--#{$n2}-rgb);
+    --#{$n1}-sc-rgb: var(--#{$n2}-sc-rgb);
+}
+@mixin vh100 {
+    height: 100vh;
+    height: var(--vh, 100vh);
+    height: stretch;
+}
+@mixin font($name, $path, $weight, $range: null) {
+    @font-face {
+        font-family: $name;
+        src: url('#{$path}/#{$name}.woff2#{$cache}') format('woff2'),
+        url('#{$path}/#{$name}.woff#{$cache}') format('woff');
+        font-weight: $weight;
+        font-style: normal;
+        font-display: swap;
+        @if ($range != null) {
+            unicode-range: $range;
+        }
+    }
+}
+@mixin mobile {
+    @media screen and (max-width: $mobile) {
+        @content;
+    }
+}
+@mixin mobile-landscape {
+    @media screen and (max-width: $mobile) and (orientation: landscape) {
+        @content;
+    }
+}
+@mixin mobile-portrait {
+    @media screen and (max-width: $mobile) and (orientation: portrait) {
+        @content;
+    }
+}
+@mixin tablet {
+    @media screen and (max-width: $tablet) {
+        @content;
+    }
+}
+@mixin tablet-landscape {
+    @media screen and (max-width: $tablet) and (orientation: landscape) {
+        @content;
+    }
+}
+@mixin tablet-portrait {
+    @media screen and (max-width: $tablet) and (orientation: portrait) {
+        @content;
+    }
+}
+@mixin desktop {
+    @media screen and (min-width: #{$tablet + 1px}) {
+        @content;
+    }
+}
+@mixin colorPalette($map: $c) {
+    @each $name, $color in $map {
+        $map: map-merge($map, (#{$name + '-hover'}: set-lightness($color, 5)));
+        $map: map-merge($map, (#{$name + '-light'}: lighten($color, 5)));
+        $map: map-merge($map, (#{$name + '-dark'}: lighten($color, 5)));
+        $map: map-merge($map, (#{$name + '-sc'}: set-color($color)));
+        $map: map-merge($map, (#{$name + '-rgb'}: #{red($color), green($color), blue($color)}));
+        $map: map-merge($map, (#{$name + '-sc-rgb'}: #{red(set-color($color)), green(set-color($color)), blue(set-color($color))}));
+    }
+    :root {
+        @each $name, $color in $map {
+            --#{$name}: #{$color};
+        }
+    }
+}

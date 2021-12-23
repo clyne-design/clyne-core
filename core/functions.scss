@@ -1,0 +1,44 @@
+@use "sass:math";
+@import "variables";
+@function per($size, $divider: $guide) {
+    $per: math.div($size, $divider) * 100;
+    @return #{$per + '%'};
+}
+@function rem($size) {
+    $remSize: math.div($size, $baseFontSize);
+    @if $size == 1  or $size == -1 {
+        @return #{$size}px;
+    }
+    @return #{$remSize}rem;
+}
+@function set-lightness($color, $amount) {
+    @if (lightness($color) > $contrastAmount) {
+        @return darken($color, $amount);
+    } @else {
+        @return lighten($color, $amount);
+    }
+}
+@function set-color($color, $color-dark: $setColorDark, $color-light: $setColorLight) {
+    @if (lightness($color) > $contrastAmount) {
+        @return $color-dark;
+    } @else {
+        @return $color-light;
+    }
+}
+@function c($color, $opacity: 1) {
+    @if $opacity == 1 {
+        @return var(--#{$color});
+    } @else {
+        @return rgba(var(--#{$color}-rgb), $opacity);
+    }
+}
+@function sc($color, $opacity: 1) {
+    @if $opacity == 1 {
+        @return var(--#{$color}-sc);
+    } @else {
+        @return rgba(var(--#{$color}-sc-rgb), $opacity);
+    }
+}
+@function f($size, $line: $size + 4) {
+    @return rem($size) / math.div($line, $size);
+}
