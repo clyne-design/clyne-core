@@ -1,5 +1,4 @@
 @use "sass:math";
-@import "variables";
 @function per($size, $divider: $guide) {
     $per: math.div($size, $divider) * 100;
     @return #{$per + '%'};
@@ -41,4 +40,7 @@
 }
 @function f($size, $line: $size + 4) {
     @return rem($size) / math.div($line, $size);
+}
+@function div($value, $divider) {
+    @return math.div($value, $divider);
 }

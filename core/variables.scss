@@ -1,6 +1,3 @@
-@import 'core/functions';
-@import 'core/mixins';
-
 $fontSize: 14 !default;
 $lineHeight: 20 !default;
 $baseFontSize: 10 !default;
@@ -10,7 +7,7 @@ $setColorDark: #000000 !default;
 $f: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 
 $mobile: 767px !default;
-$tablet: 960px !default;
+$tablet: $mobile !default;
 
 $guide: 1240 !default;
 $contrastAmount: 50 !default;

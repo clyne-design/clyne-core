@@ -1,4 +1,3 @@
-@import "variables";
 @mixin placeholder {
     $prefixList: '::-webkit-input', ':-moz', '::-moz', ':-ms-input';
     @each $prefix in $prefixList {
@@ -18,7 +17,7 @@
         @content;
     }
 }
-@mixin hover {
+@mixin hover($class: null) {
     @media (hover: hover) {
         &:hover {
             @content;
@@ -26,6 +25,11 @@
     }
     &:active {
         @content;
+    }
+    @if $class != null {
+        &#{$class} {
+            @content;
+        }
     }
 }
 @mixin hover-active {
@@ -98,6 +102,19 @@
         @content;
     }
 }
+@mixin hover-not-active($selector: null) {
+    @media (hover: hover) {
+        @if $selector != null {
+            #{$selector}:hover:not(:active) & {
+                @content;
+            }
+        } @else {
+            &:hover:not(:active) {
+                @content;
+            }
+        }
+    }
+}
 @mixin colorPalette($map: $c) {
     @each $name, $color in $map {
         $map: map-merge($map, (#{$name + '-hover'}: set-lightness($color, 5)));
@@ -109,7 +126,32 @@
     }
     :root {
         @each $name, $color in $map {
-            --#{$name}: #{$color};
+            --#{"" + $name + ""}: #{$color};
         }
     }
 }
+@mixin darkMode($root: null) {
+    @if $root == null {
+        [mode="dark"] & {
+            @content;
+        }
+    } @else {
+        &[mode="dark"] {
+            @content;
+        }
+    }
+}
+@mixin overrideSVG($from, $light, $dark) {
+    [style*="fill:#{"" + $from + ""}"],
+    [style*="fill: #{"" + $from + ""}"],
+    [style*="fill:rgb(#{red($from),green($from),blue($from)})"],
+    [style*="fill: rgb(#{red($from),green($from),blue($from)})"],
+    [style*="fill:rgb(#{red($from)}, #{green($from)}, #{blue($from)})"],
+    [style*="fill: rgb(#{red($from)}, #{green($from)}, #{blue($from)})"] {
+        fill: $light !important;
+        @include darkMode {
+            fill: $dark !important;
+        }
+    }
+}
+

@@ -17,11 +17,6 @@ html, body {
     justify-content: center;
     align-items: center;
 }
-:root {
-    @each $name, $color in $c {
-        --#{$name}: #{$color};
-    }
-}
 * {
     margin: 0;
     border: 0;

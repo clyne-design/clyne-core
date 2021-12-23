@@ -1,6 +1,6 @@
 {
   "name": "clyne-scss-core",
-  "version": "1.0.1",
+  "version": "1.0.9",
   "repository": "https://github.com/jacobclyne/clyne-scss-core",
   "license": "BSD-3-Clause",
   "description": "SCSS useful mixins, functions and snippets and global reset",
@@ -9,7 +9,7 @@
     "email": "j@clyne.design",
     "url": "https://www.clyne.design"
   },
-  "devDependencies": {
+  "dependencies": {
     "sass": "^1.45.1"
   }
 }
