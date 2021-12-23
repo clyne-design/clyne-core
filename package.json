@@ -11,5 +11,8 @@
   },
   "dependencies": {
     "sass": "^1.45.1"
+  },
+  "scripts": {
+    "publish": "npm version patch && npm publish"
   }
 }
