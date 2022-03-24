@@ -10,7 +10,7 @@
     "url": "https://www.clyne.design"
   },
   "dependencies": {
-    "sass": "^1.45.1"
+    "sass": "^1.49.9"
   },
   "scripts": {
     "deploy": "git add . && git commit -m 'version update' && git push && npm version patch && npm publish"
