@@ -14,4 +14,4 @@ export const rem = number => `${number / 10}rem`;
 
 export const isObject = val => typeof val === 'object' && val !== null;
 
-export const isFunction = func => typeof func === 'function';
+export const isFunction = (func, invoke = true) => invoke ? typeof func === 'function' && func() : typeof func === 'function';
