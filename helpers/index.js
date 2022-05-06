@@ -5,7 +5,7 @@ export const isExternalURL = url => !!`${url}`.match(/(https?:\/\/\S+)/g);
 export const safeREL = 'noopener noreferrer';
 
 export const backgroundImage = url => conditionalSpread({
-    backgroundImage: url,
+    backgroundImage: `url(${url})`,
 }, url);
 
 export const fakeArray = number => Array(number).fill('').map((_, index) => index);
