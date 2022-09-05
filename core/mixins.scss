@@ -60,6 +60,11 @@
         @content;
     }
 }
+@mixin not-mobile {
+    @media screen and (min-width: #{$mobile + 1px}) {
+        @content;
+    }
+}
 @mixin mobile-landscape {
     @media screen and (max-width: $mobile) and (orientation: landscape) {
         @content;
@@ -67,6 +72,11 @@
 }
 @mixin mobile-portrait {
     @media screen and (max-width: $mobile) and (orientation: portrait) {
+        @content;
+    }
+}
+@mixin only-tablet {
+    @media screen and (max-width: $tablet) and (min-width: #{$mobile + 1px}) {
         @content;
     }
 }
