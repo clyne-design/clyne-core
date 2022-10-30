@@ -1,16 +1,9 @@
 @keyframes fadeIn {
-    from {
-        opacity: var(--fadeIn-opacity, 0);
-    }
     to {
         opacity: var(--fadeIn-opacity, 1);
     }
 }
 @keyframes transformReveal {
-    from {
-        opacity: var(--transformReveal-opacity, 0);
-        transform: translate3d(var(--transformReveal-x, 0), var(--transformReveal-y, 0), var(--transformReveal-z, 0)) scale(var(--transformReveal-scale), 1);
-    }
     to {
         opacity: var(--transformReveal-opacity, 1);
         transform: translate3d(var(--transformReveal-x, 0), var(--transformReveal-y, 0), var(--transformReveal-z, 0)) scale(var(--transformReveal-scale), 1);
