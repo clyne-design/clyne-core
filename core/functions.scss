@@ -59,3 +59,16 @@
 @function div($value, $divider) {
     @return math.div($value, $divider);
 }
+@function size($size, $name) {
+    @return var(--ui-kit-#{$size}-#{$name});
+}
+@function circle-position($size, $border-size, $coordinate) {
+    $center: (div($size, 2)) - $border-size - (div($border-size, 2));
+    $half-size-border: (div($size, 2)) - $border-size + (div($border-size, 2));
+    $root: 0.70710678118;
+    @if $coordinate == y {
+        @return round($center - ($half-size-border * $root));
+    } @else {
+        @return round($center + ($half-size-border * $root));
+    }
+}

@@ -158,4 +158,30 @@
         }
     }
 }
-
+@mixin startIndicator {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: rem(2);
+    border-radius: rem(2);
+    background: c(brand);
+    transform: translate3d(-100%, 0, 0);
+    transition: 400ms transform;
+}
+@function size($size, $name) {
+    @return var(--ui-kit-#{$size}-#{$name});
+}
+@mixin getSizes {
+    @each $size, $props in $uiKitSizes {
+        &.s-#{$size} {
+            --height: #{size($size, 'height')};
+            --padding: #{size($size, 'padding')};
+            --font-size: #{size($size, 'fontSize')};
+            --width: #{size($size, 'proportionalWidth')};
+            --border-radius: #{size($size, 'borderRadius')};
+        }
+    }
+}
