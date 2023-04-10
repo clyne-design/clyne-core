@@ -1,6 +1,6 @@
 {
   "name": "clyne-core",
-  "version": "1.0.48",
+  "version": "1.0.49",
   "repository": "https://github.com/jacobclyne/clyne-core",
   "license": "BSD-3-Clause",
   "description": "Collection of SCSS/JS mixins, helpers, functions, snippets and global reset.",
